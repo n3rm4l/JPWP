@@ -27,7 +27,6 @@ public class LogoStart implements Screen{
 		font1.setColor(1.0f, 0.843f, 0.0f, 1.0f);
 		tekst1 = new  GlyphLayout(font1, "PRESS ANY KEY \n          TO START");
 
-		
 	}
 	
 	public void setAlpha() {

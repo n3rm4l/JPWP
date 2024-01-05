@@ -7,7 +7,7 @@ import com.test1.ekrany.Wnetrze;
 
 public class Rozgrywka extends Game {
 	public SpriteBatch batch;
-	int _1x;
+	//int _1x;
 	
 	public Rozgrywka() {
         super();
