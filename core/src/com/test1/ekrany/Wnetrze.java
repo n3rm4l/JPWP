@@ -45,6 +45,7 @@ public class Wnetrze implements Screen{
 	    backgroundMusic.setLooping(true);
 	    backgroundMusic.setVolume(0.2f);
 	    backgroundMusic.play();
+	    object.fontSize(24);
 	    
 	}
 
@@ -90,11 +91,12 @@ public class Wnetrze implements Screen{
 		 if (Constants.bugfixMode) {
 			 object.batch.begin();
 		
-			 //object.font.setScale(0.5f);
-		     //object.font.draw(object.batch, "player coordinates: " + mouseX + ", " + mouseY +"\n    Collision: " + mapManager.collisionControl(mouseX, mouseY), 0, 64);
-		     //object.batch.end();
+			 object.fontSize(24);
+		     object.font.draw(object.batch, "player coordinates: " + mouseX + ", " + mouseY +"\n    Collision: " + mapManager.collisionControl(mouseX, mouseY), 0, 64);
+		     object.batch.end();
 		     grid.shapeRenderer.setColor(0, 0.55f, 0, 1); // Ustaw kolor na zielony
 			 grid.draw();
+			 
 		 }
 
 		//mapManager.renderLayer();
