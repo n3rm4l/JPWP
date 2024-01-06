@@ -2,6 +2,7 @@ package com.test1.ekrany;
 
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.Input;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.graphics.Texture;
@@ -51,6 +52,11 @@ public class Wnetrze implements Screen{
 
 	@Override
 	public void render(float delta) {
+		if (Gdx.input.isKeyJustPressed(Input.Keys.ESCAPE)) {
+	        GdxGameClass game = (GdxGameClass) Gdx.app.getApplicationListener();
+	        game.setScreen(new MenuScreen(game));
+	    }
+		
 		int mouseX = (int)gracz.x/64;	//bugfix
 		int mouseY = (int)gracz.y/64;	//bugfix
 		

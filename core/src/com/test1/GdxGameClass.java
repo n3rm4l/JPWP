@@ -32,10 +32,10 @@ public class GdxGameClass extends Game {
 		parameter.size = 64;
 		parameter.color = new Color(210/255f, 105/255f, 30/255f, 1);
 		font = generator.generateFont(parameter);
-		Label.LabelStyle labelStyle = new Label.LabelStyle(font, Color.WHITE);
-		VisUI.load();
-	    VisUI.setDefaultTitleAlign(Align.center);
-	    VisUI.getSkin().add("default", labelStyle);
+		//Label.LabelStyle labelStyle = new Label.LabelStyle(font, Color.WHITE);
+		//VisUI.load();
+	    //VisUI.setDefaultTitleAlign(Align.center);
+	   // VisUI.getSkin().add("default", labelStyle);
 	    
 		setScreen(new LogoStart(this));
 	}
