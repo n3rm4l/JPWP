@@ -31,11 +31,11 @@ public class MenuScreen implements Screen {
 		 shapeRenderer.begin(ShapeRenderer.ShapeType.Filled);
 		 shapeRenderer.rect(0, 0, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
 		 shapeRenderer.end();
-		 
+		/* 
 		 if (Gdx.input.isKeyJustPressed(Input.Keys.ESCAPE)) {
-		        game.setScreen(new Wnetrze(game));
+		        game.setScreen(game.Wnetrze);
 		    }
-		 
+		 */
 	}
 
 	@Override

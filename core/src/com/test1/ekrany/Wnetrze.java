@@ -18,7 +18,6 @@ import com.test1.mapLogic.MapManager;
 
 public class Wnetrze implements Screen{
 	Player gracz;
-	
 	Texture img;
 	float x, y;
 	TextureRegion currentFrame = new TextureRegion();
@@ -27,6 +26,8 @@ public class Wnetrze implements Screen{
 	MapManager mapManager;	//nowe
 	BitmapFont font;
 	Music backgroundMusic;
+	boolean pause = false;
+	
 	
 	public Wnetrze(GdxGameClass object) {
 		this.object = object;
@@ -52,11 +53,18 @@ public class Wnetrze implements Screen{
 
 	@Override
 	public void render(float delta) {
+		if (!pause) {	generalLogic(delta);}
 		if (Gdx.input.isKeyJustPressed(Input.Keys.ESCAPE)) {
-	        GdxGameClass game = (GdxGameClass) Gdx.app.getApplicationListener();
-	        game.setScreen(new MenuScreen(game));
-	    }
-		
+	        pause = !pause;
+	        if (pause) {
+                backgroundMusic.pause();
+            } else {
+                backgroundMusic.play();
+            }
+	    } 
+	}
+
+	public void generalLogic(float delta) {
 		int mouseX = (int)gracz.x/64;	//bugfix
 		int mouseY = (int)gracz.y/64;	//bugfix
 		
@@ -68,18 +76,12 @@ public class Wnetrze implements Screen{
 			if (mapManager.collisionControl(gracz.destination.x/64, gracz.destination.y/64)==1) {
 				gracz.cancelMove();
 				gracz.setMove();	// reset aktualnego żądania ruchu 
-			};
-			
-			
+			};	
 		}
 	    gracz.stateTime += delta;	 
 	    
 		ScreenUtils.clear(0, 1, 0.995f, 1);
 		//currentFrame.flip(false, true);
-		
-		 
-
-		 
 		
 		object.batch.begin();
 		mapManager.renderMap();
@@ -96,19 +98,15 @@ public class Wnetrze implements Screen{
 		
 		 if (Constants.bugfixMode) {
 			 object.batch.begin();
-		
 			 object.fontSize(24);
-		     object.font.draw(object.batch, "player coordinates: " + mouseX + ", " + mouseY +"\n    Collision: " + mapManager.collisionControl(mouseX, mouseY), 0, 64);
+		     object.font.draw(object.batch, "player coordinates: " + mouseX + ", " + mouseY +"\n    paused?: " + pause, 0, 64);
 		     object.batch.end();
 		     grid.shapeRenderer.setColor(0, 0.55f, 0, 1); // Ustaw kolor na zielony
 			 grid.draw();
-			 
 		 }
-
 		//mapManager.renderLayer();
-
 	}
-
+	
 	@Override
 	public void resize(int width, int height) {
 	}

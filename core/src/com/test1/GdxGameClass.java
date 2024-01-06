@@ -2,6 +2,7 @@ package com.test1;
 
 import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
@@ -53,8 +54,6 @@ public class GdxGameClass extends Game {
 		if (parameter.size == size) return; 
 			parameter.size = size;
 			font = generator.generateFont(parameter);
-
-		
 	}
 	
 	
