@@ -12,6 +12,7 @@ import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.utils.ScreenUtils;
 import com.test1.Constants;
 import com.test1.GdxGameClass;
+import com.test1.UI.Menu;
 import com.test1.bugTest.TestGrid;
 import com.test1.entity.Player;
 import com.test1.mapLogic.MapManager;
@@ -22,10 +23,11 @@ public class Wnetrze implements Screen{
 	float x, y;
 	TextureRegion currentFrame = new TextureRegion();
 	TestGrid grid;
-	GdxGameClass object;
+	public GdxGameClass object;
 	MapManager mapManager;	//nowe
 	BitmapFont font;
 	Music backgroundMusic;
+	Menu menu;
 	boolean pause = false;
 	
 	
@@ -53,15 +55,21 @@ public class Wnetrze implements Screen{
 
 	@Override
 	public void render(float delta) {
+		
 		if (!pause) {	generalLogic(delta);}
 		if (Gdx.input.isKeyJustPressed(Input.Keys.ESCAPE)) {
 	        pause = !pause;
 	        if (pause) {
+	        	 if (menu == null) {menu = new Menu(object);}
+	        			 //System.out.println("IS NULL :(");}
                 backgroundMusic.pause();
+                menu.drawMenu();
+                //object.setScreen(menu);
+				//menu.render(delta);
             } else {
                 backgroundMusic.play();
             }
-	    } 
+		}    
 	}
 
 	public void generalLogic(float delta) {
