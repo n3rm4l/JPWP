@@ -5,11 +5,11 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.audio.Music;
+import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
-import com.badlogic.gdx.utils.ScreenUtils;
 import com.test1.Constants;
 import com.test1.GdxGameClass;
 import com.test1.UI.Menu;
@@ -19,6 +19,10 @@ import com.test1.mapLogic.MapManager;
 
 public class Wnetrze implements Screen{
 	Player gracz;
+
+	
+	
+	//Menu menuStage;
 	Texture img;
 	float x, y;
 	TextureRegion currentFrame = new TextureRegion();
@@ -34,6 +38,7 @@ public class Wnetrze implements Screen{
 	public Wnetrze(GdxGameClass object) {
 		this.object = object;
 		 grid = new TestGrid();
+
 	}
 
 	
@@ -60,10 +65,15 @@ public class Wnetrze implements Screen{
 		if (Gdx.input.isKeyJustPressed(Input.Keys.ESCAPE)) {
 	        pause = !pause;
 	        if (pause) {
-	        	 if (menu == null) {menu = new Menu(object);}
+	        	 if (menu == null) {menu = new Menu();}
 	        			 //System.out.println("IS NULL :(");}
                 backgroundMusic.pause();
-                menu.drawMenu();
+                Gdx.gl.glClearColor(0, 0, 0, 1);  // Czyść ekran na czarno
+                Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
+                object.batch.begin();
+                //menu.act(delta);
+                //menu.draw();
+                object.batch.end();
                 //object.setScreen(menu);
 				//menu.render(delta);
             } else {
@@ -75,6 +85,8 @@ public class Wnetrze implements Screen{
 	public void generalLogic(float delta) {
 		int mouseX = (int)gracz.x/64;	//bugfix
 		int mouseY = (int)gracz.y/64;	//bugfix
+		//Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
+		//Gdx.gl.glClearColor(0, 0, 0, 1);
 		
 		if(gracz.destination.isReached(gracz.x, gracz.y)) {
 			gracz.setMove();
@@ -88,7 +100,7 @@ public class Wnetrze implements Screen{
 		}
 	    gracz.stateTime += delta;	 
 	    
-		ScreenUtils.clear(0, 1, 0.995f, 1);
+		//ScreenUtils.clear(0, 1, 0.995f, 1);
 		//currentFrame.flip(false, true);
 		
 		object.batch.begin();
@@ -112,7 +124,6 @@ public class Wnetrze implements Screen{
 		     grid.shapeRenderer.setColor(0, 0.55f, 0, 1); // Ustaw kolor na zielony
 			 grid.draw();
 		 }
-		//mapManager.renderLayer();
 	}
 	
 	@Override
