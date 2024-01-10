@@ -20,6 +20,7 @@ public class Player{
 	public float x, y;	// Pozycja gracza
 	int tilesX , tilesY, NEG;	//Bieżący ruch gracza
 
+
 	
 	public Animation<TextureRegion>[] posAnimation = new Animation[4];
 	//public Animation<TextureRegion>chosenAnimation;
@@ -61,6 +62,10 @@ public class Player{
         //punchingSound.play();
         Gdx.audio.newSound(Gdx.files.internal("Sound/punching.wav")).play();
 	}
+	
+	
+	
+	
 	
 	public void setMove() {
 		//TODO nie zakładam ruchu "na ukos"	//można nadpisać x i y, ale to jest pardziej przejrzyste

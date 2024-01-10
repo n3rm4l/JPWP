@@ -45,13 +45,13 @@ public class MapManager {
     	            }
     	        }
     	    }
-    	 System.out.println("Test kolizji");
-    	 for (int row = collisionMatrix[0].length; row > 0; row--) {
-    		    for (int col = 0; col < collisionMatrix.length; col++) {
-    		        System.out.print(collisionMatrix[col][row-1] + "\t");
-    		    }
-    		    System.out.println();
-    		}
+    	 
+			/*
+			 * System.out.println("Test kolizji"); for (int row = collisionMatrix[0].length;
+			 * row > 0; row--) { for (int col = 0; col < collisionMatrix.length; col++) {
+			 * System.out.print(collisionMatrix[col][row-1] + "\t"); } System.out.println();
+			 * }
+			 */
 		
 	}
     public int collisionControl(int x, int y) {

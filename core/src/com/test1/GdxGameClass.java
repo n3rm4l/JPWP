@@ -2,15 +2,11 @@ package com.test1;
 
 import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.Screen;
+import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
-import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.freetype.FreeTypeFontGenerator;
 import com.badlogic.gdx.graphics.g2d.freetype.FreeTypeFontGenerator.FreeTypeFontParameter;
-import com.badlogic.gdx.scenes.scene2d.ui.Label;
-import com.badlogic.gdx.utils.Align;
-import com.kotcrab.vis.ui.VisUI;
 import com.test1.ekrany.LogoStart;
 			/**
 			 * Podejście zmodyfikoano
@@ -22,6 +18,9 @@ public class GdxGameClass extends Game {
 	public BitmapFont[] font = new BitmapFont[2];
 	 FreeTypeFontGenerator[] generator = new FreeTypeFontGenerator[2];	//F1 -> PIxelify F2-> Press_Start_2P
 	 FreeTypeFontParameter parameter;
+	 
+	 public Music backgroundMusic;
+	 float volume;
 	 
 	//int _1x;
 	/*
@@ -64,21 +63,29 @@ public class GdxGameClass extends Game {
 			font1 = generatorF1.generateFont(parameter);
 	}
 	*/
-	public boolean getFont(int font, int size, Color color) {
+	public BitmapFont getFont(int font, int size, Color color) {
 		parameter.size = size;
 		parameter.color = color;
 		this.font[font] = generator[font].generateFont(parameter);
-		return true;
+		return this.font[font];
 	}
 	
-	public boolean getFont(int font, int size) {
+	public BitmapFont getFont(int font, int size) {
 		getFont(font, size ,this.font[font].getColor());
-		return true;
+		return  this.font[font];
 	}
 	
-	public boolean getFont(int font, Color color) {
-		getFont(font, 16 ,color);
-		return true;
+	public BitmapFont getFont(int font, Color color) {
+		getFont(font, (int)this.font[font].getCapHeight() ,color);
+		return  this.font[font];
+	}
+	public void setVolume(float f) {
+		backgroundMusic.setVolume(f);
+		System.out.println("volume setted: " + f);
+	}
+	
+	public float getVolume() {
+		return backgroundMusic.getVolume();
 	}
 	
 	
@@ -89,5 +96,7 @@ public class GdxGameClass extends Game {
 		img.dispose();
 	}
 	*/
+	
+	
 }
 
